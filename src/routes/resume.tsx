@@ -74,13 +74,10 @@ function Resume() {
 
         <Block title="Career Objective">
           <p className="text-foreground/85 leading-relaxed">
-            Flutter Developer with 3 years of experience building scalable cross-platform
-            mobile apps across social commerce, beauty, fitness, ride-sharing, agri-tech and enterprise
-            sectors. Experienced in clean architecture, real-time systems (Socket.IO), map-based
-            services and secure payment integrations (Stripe, bKash, Nagad, ShurjoPay). Proven track
-            record of delivering 13+ production apps, with 5 currently live on the App Store and
-            Google Play (Presentini, Fouta, BloodFit, Meghna). Open to new full-time
-            opportunities.
+            Flutter Developer with 3 years of experience shipping scalable, cross-platform mobile apps across
+            social commerce, beauty, fitness, ride-sharing, agri-tech, and enterprise GovTech. Delivered 13+ production
+            apps, with 5 live on the App Store and Google Play (Presentini, Fouta, BloodFit, Meghna). Proven expertise in Clean Architecture,
+            Socket.IO real-time communication, Google Maps navigation, and multi-gateway payments (Stripe, bKash, Nagad, ShurjoPay).
           </p>
         </Block>
 
@@ -90,10 +87,9 @@ function Resume() {
             company="Sparktech Agency"
             period="Dec 2025 — Present"
             bullets={[
-              "Shipped production Flutter apps across social commerce, beauty, city discovery and fitness — published on App Store and Google Play.",
-              "Built Socket.IO real-time features for multi-role communication (feeds, messaging and live order updates) in production apps.",
-              "Owned Google Maps and geolocation flows for live tracking and location-based service discovery.",
-              "Collaborated across distributed teams on performance optimisation, code reviews and scalable module design.",
+              "Architected and shipped production Flutter apps (Presentini, Fouta, BloodFit) published on the App Store and Google Play.",
+              "Engineered Socket.IO real-time pipelines for multi-role messaging, live activity feeds, and order tracking with reconnect handling.",
+              "Implemented Google Maps and geolocation tracking with camera tracking, custom polylines, and proximity discovery.",
             ]}
           />
           <Job
@@ -101,49 +97,47 @@ function Resume() {
             company="Synergy Interface Ltd."
             period="Oct 2023 — Nov 2025"
             bullets={[
-              "Delivered 6+ production Flutter apps for enterprise and government clients across insurance, agriculture and edtech.",
-              "Applied Clean Architecture to keep feature modules modular and testable across multi-role codebases.",
-              "Optimised state management and API handling, reducing load times and improving app responsiveness.",
-              "Integrated bKash, Nagad and ShurjoPay payment gateways for digital premium and investment transactions in production.",
+              "Delivered 6+ production Flutter apps including Meghna Life Insurance, DMS (Nokia & Honor distribution), Nursery Management (GovTech), and Edex-365.",
+              "Applied feature-first Clean Architecture across Presentation, Domain, and Data layers, accelerating onboarding and feature delivery.",
+              "Integrated bKash, Nagad, and ShurjoPay payment gateways for automated digital premiums and investment transactions.",
             ]}
           />
         </Block>
 
         <Block title="Key Projects">
           <Job
-            role="Presentini — City Discovery"
+            role="Presentini — City & Event Discovery"
             company="Sparktech Agency · App Store & Play Store"
             period=""
             bullets={[
-              "Built a city discovery platform for local events and specials with location-based browsing, favorites and push notifications.",
-              "Shipped live on both App Store and Google Play with Firebase-backed alerts and geolocation discovery.",
+              "City discovery platform surfacing location-aware events, exclusive specials, category filters, and Firebase push alerts.",
+              "Shipped live on both App Store and Google Play with Bloc state management and geolocation discovery.",
             ]}
           />
           <Job
-            role="Fouta App — Social Commerce Platform"
+            role="Fouta App — Social Commerce Marketplace"
             company="Sparktech Agency · App Store & Play Store"
             period=""
             bullets={[
-              "Engineered a 4-role system (user, seller, driver, admin) with separate onboarding flows and permission-based access control.",
-              "Built real-time messaging, feeds and stories using Socket.IO, powering a live social marketplace.",
-              "Implemented end-to-end checkout, payment processing and delivery management pipeline.",
+              "Multi-role commerce system (Customer, Seller, Driver, Admin) with real-time chat, live feeds, local cart caching, and end-to-end delivery tracking.",
+              "Built real-time messaging, feeds and order updates using Socket.IO and Hive local persistence.",
             ]}
           />
           <Job
-            role="BloodFit — AI Health & Fitness"
+            role="BloodFit — AI Health & Nutrition"
             company="Sparktech Agency · Live on Google Play"
             period=""
             bullets={[
-              "Built blood-type personalized meal plans and workouts with AI generation and dual Socket.IO + polling fetch.",
-              "Implemented multi-tier in-app purchases (Starter/Pro/Elite) with Firebase Auth and GetX state management.",
+              "Blood-type personalized nutrition with AI generation, resilient Socket.IO + polling fetch, and 6-tier in-app subscriptions.",
+              "Implemented multi-tier in-app purchases with Firebase Auth and GetX state management.",
             ]}
           />
           <Job
-            role="Meghna Life Insurance — Customer & Advisor Apps"
+            role="Meghna Life Insurance — Advisor Mobile Suite"
             company="Synergy Interface Ltd. · Live on Google Play"
             period=""
             bullets={[
-              "Delivered dual-app suite for a government-linked insurance provider.",
+              "Enterprise mobile suite for a major national insurer, digitizing advisor workflows, premium collection, and digital receipts.",
               "Integrated bKash and Nagad for secure digital premium payments, replacing manual collection workflows.",
             ]}
           />
@@ -151,36 +145,36 @@ function Resume() {
 
         <Block title="Skills">
           <div className="grid gap-3 sm:grid-cols-2">
-            <SkillRow label="Languages" items={["Dart"]} />
-            <SkillRow label="Framework" items={["Flutter"]} />
+            <SkillRow label="Languages" items={["Dart", "Platform Channels (Kotlin / Swift interop)", "C/C++"]} />
+            <SkillRow label="Frameworks" items={["Flutter (iOS & Android)"]} />
             <SkillRow label="State Management" items={["Bloc", "GetX", "Provider", "Riverpod"]} />
-            <SkillRow label="Architecture" items={["Clean Architecture"]} />
-            <SkillRow label="Backend & APIs" items={["REST API", "Dio", "Firebase", "Socket.IO"]} />
+            <SkillRow label="Architecture" items={["Clean Architecture (Feature-First)", "Repository Pattern", "SOLID"]} />
+            <SkillRow label="Backend & APIs" items={["REST API", "Dio", "Firebase (Auth, FCM, Analytics)", "Socket.IO", "WebSockets"]} />
             <SkillRow
               label="Payments"
-              items={["Stripe", "bKash", "Nagad", "ShurjoPay", "In-App Purchases"]}
+              items={["Stripe", "In-App Purchases", "bKash", "Nagad", "ShurjoPay"]}
             />
             <SkillRow
-              label="Core Features"
+              label="Mobile Core"
               items={[
-                "Google Maps",
+                "Google Maps & Directions API",
+                "Geolocation",
                 "Push Notifications",
                 "Deep Linking",
                 "Biometric Auth",
                 "Hive",
-                "Get Storage",
               ]}
             />
             <SkillRow
-              label="Tools"
+              label="Tools & DevOps"
               items={[
                 "Git",
                 "GitHub",
-                "VS Code",
-                "Figma",
-                "Postman",
-                "Play Console",
                 "App Store Connect",
+                "Google Play Console",
+                "Postman",
+                "Figma",
+                "VS Code",
               ]}
             />
           </div>

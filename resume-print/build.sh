@@ -17,6 +17,7 @@ out="$here/MD_Nurujjaman_Resume.pdf"
 
 chrome=""
 for c in \
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
   "/c/Program Files/Google/Chrome/Application/chrome.exe" \
   "/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" \
   "/c/Program Files/Microsoft/Edge/Application/msedge.exe" \
@@ -42,7 +43,7 @@ else
 fi
 
 "$chrome" \
-  --headless \
+  --headless=new \
   --disable-gpu \
   --no-pdf-header-footer \
   --print-to-pdf="$out_arg" \
