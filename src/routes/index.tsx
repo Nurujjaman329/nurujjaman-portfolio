@@ -234,7 +234,7 @@ function Index() {
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Flutter</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Bloc</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Geolocation</span>
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Firebase</span>
               </div>
@@ -266,9 +266,9 @@ function Index() {
                 4-role system (User, Seller, Driver, Admin) with Socket.IO real-time feeds, live chat, local cart caching, and end-to-end checkout &amp; delivery tracking.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Socket.IO</span>
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Hive</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">REST API</span>
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Google Maps</span>
               </div>
             </div>

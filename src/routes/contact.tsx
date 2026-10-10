@@ -50,9 +50,9 @@ function Contact() {
 
   return (
     <Section
-      eyebrow="Contact"
-      title="Let's build something."
-      description="Open to Flutter roles, freelance work and collaborations on innovative mobile products."
+      eyebrow="06 — Contact"
+      title="Let’s build something."
+      description="Open to Mobile / Flutter roles, freelance engineering, and collaborations on high-impact products."
     >
       <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
         <div className="space-y-6">
@@ -70,7 +70,7 @@ function Contact() {
           />
           <ContactItem icon={MapPin} label="Based in" value="Mohakhali, Dhaka, Bangladesh" />
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-3 font-semibold">
               Elsewhere
             </p>
             <div className="flex gap-3">
@@ -78,11 +78,10 @@ function Contact() {
               <Social icon={Linkedin} href="https://www.linkedin.com/in/nurujjaman329/" />
             </div>
           </div>
-          <div className="rounded-xl border border-primary/30 bg-primary/5 p-5">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">Status</p>
-            <p className="mt-1 text-sm text-foreground/90">
-              Currently <span className="font-semibold text-primary">working</span> at Sparktech
-              Agency — open to new full-time opportunities and freelance Flutter projects.
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6 shadow-xs">
+            <p className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">Current Availability</p>
+            <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+              Currently working at <span className="font-semibold text-foreground">Sparktech Agency</span> — open to new full-time engineering roles and high-impact freelance projects.
             </p>
           </div>
         </div>
@@ -90,14 +89,14 @@ function Contact() {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="rounded-2xl border border-border/60 bg-card-gradient p-8 shadow-card space-y-5"
+          className="rounded-2xl border border-border bg-card p-8 shadow-card space-y-5"
         >
           <Field label="Name">
             <input
               required
               name="name"
               type="text"
-              className="w-full rounded-md border border-input bg-background/60 px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20"
               placeholder="Your name"
             />
           </Field>
@@ -106,7 +105,7 @@ function Contact() {
               required
               name="email"
               type="email"
-              className="w-full rounded-md border border-input bg-background/60 px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20"
               placeholder="you@company.com"
             />
           </Field>
@@ -114,8 +113,8 @@ function Contact() {
             <input
               name="title"
               type="text"
-              className="w-full rounded-md border border-input bg-background/60 px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/30"
-              placeholder="Flutter project enquiry"
+              className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20"
+              placeholder="Mobile engineering opportunity"
             />
           </Field>
           <Field label="Message">
@@ -123,26 +122,26 @@ function Contact() {
               required
               name="message"
               rows={5}
-              className="w-full rounded-md border border-input bg-background/60 px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/30"
-              placeholder="Tell me about your project or role..."
+              className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20"
+              placeholder="Tell me about your product, team, or challenge..."
             />
           </Field>
           <button
             type="submit"
             disabled={status === "sending" || status === "sent"}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-spring hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-sm transition-spring hover:scale-[1.01] hover:brightness-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             <Send className="h-4 w-4" />
-            {status === "sending" ? "Sending…" : status === "sent" ? "Sent!" : "Send message"}
+            {status === "sending" ? "Sending…" : status === "sent" ? "Message sent!" : "Send message"}
           </button>
           {status === "sent" && (
-            <p className="text-sm text-primary text-center animate-fade-up">
-              ✓ Thanks — I'll get back to you within 48 hours.
+            <p className="text-sm text-primary text-center font-medium animate-fade-up">
+              ✓ Thanks — I’ll respond within 24–48 hours.
             </p>
           )}
           {status === "error" && (
-            <p className="text-sm text-destructive text-center">
-              Something went wrong. Please email me directly at mdnurujjaman329@gmail.com
+            <p className="text-sm text-destructive text-center font-medium">
+              Please email directly at mdnurujjaman329@gmail.com
             </p>
           )}
         </form>

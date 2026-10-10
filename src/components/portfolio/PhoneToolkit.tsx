@@ -37,7 +37,7 @@ const techItems: TechItem[] = [
     iconText: "B",
     badgeColor: "bg-blue-800 text-white",
     summary: "Predictable event-driven state management enforcing strict immutability, testability, and audit trails.",
-    usedIn: "Presentini, Edex-365",
+    usedIn: "My Krishi, Edex-365, NMS, DMS (Nokia/Honor), Meghna Life",
   },
   {
     id: "getx",
@@ -46,7 +46,7 @@ const techItems: TechItem[] = [
     iconText: "G",
     badgeColor: "bg-purple-800 text-white",
     summary: "High-velocity reactive state management, micro-benchmarked dependency injection, and routing.",
-    usedIn: "BloodFit, Lyfuber, TNP Beauty",
+    usedIn: "Presentini, Fouta App, BloodFit, Lyfuber, TNP Beauty, Ride Sharing",
   },
   {
     id: "clean-arch",
@@ -55,7 +55,7 @@ const techItems: TechItem[] = [
     iconText: "CA",
     badgeColor: "bg-amber-800 text-white",
     summary: "Feature-first separation into Presentation, Domain (use cases), and Data layers for zero vendor lock-in.",
-    usedIn: "Fouta App, Meghna Life Insurance, Nursery Management",
+    usedIn: "My Krishi, Edex-365, NMS, DMS (Nokia/Honor), Meghna Life",
   },
   {
     id: "socketio",

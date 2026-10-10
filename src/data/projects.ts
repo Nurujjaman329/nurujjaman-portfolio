@@ -46,31 +46,32 @@ export const projects: ProjectDetail[] = [
     solution:
       "Delivered a Flutter app backed by a REST API for events, specials and city content, with Firebase for push notifications and analytics. Location-based discovery and category filters help users explore what's happening nearby, save favorites and stay updated on exclusive offers.",
     architecture: {
-      pattern: "Clean Architecture (Feature-first)",
+      pattern: "Feature-first Architecture",
       description:
-        "Discovery, events, specials and profile are isolated feature modules sharing core location and auth infrastructure. Each feature owns its presentation and data layers while reusing shared domain models for events and offers.",
+        "Modular feature-driven structure (Discovery, Events, Specials, Profile). Each feature encapsulates its own views, GetX controllers, and data providers, communicating through core shared services for auth, geolocation, and networking.",
       layers: [
         {
-          name: "Presentation",
-          desc: "Browse, event detail, specials and city screens with reactive state tied to user location and filters.",
+          name: "View (UI)",
+          desc: "Responsive screens, slivers, and adaptive widgets for city browsing and events, observing GetX reactive controllers.",
         },
         {
-          name: "Domain",
-          desc: "Event, Special and City entities with use cases for discovery, search and favorites — pure Dart.",
+          name: "Controller",
+          desc: "GetxControllers managing reactive observables (.obs), location updates, category filtering, and lifecycle state.",
         },
         {
-          name: "Data",
-          desc: "REST API clients, Firebase messaging and local cache for recently viewed events and saved specials.",
+          name: "Data / Provider",
+          desc: "REST API clients and Firebase services handling event discovery feeds, specials, and local storage caching.",
         },
       ],
     },
     stateManagement: {
-      solution: "Bloc (flutter_bloc)",
+      solution: "GetX",
       reason:
-        "Bloc kept discovery flows — filtering, pagination and favorites — predictable as users switch cities and categories. Clear state separation made it straightforward to refresh feeds and handle async API responses.",
+        "GetX provides lightweight reactive state management and route bindings without boilerplate, making real-time city switching, category filtering, and favorites updates instant and responsive.",
     },
     stack: [
       { name: "Flutter", purpose: "Cross-platform UI for iOS and Android" },
+      { name: "GetX", purpose: "Reactive state management, dependency injection & routing" },
       { name: "Firebase", purpose: "Push notifications, analytics and remote config" },
       { name: "REST API", purpose: "Events, specials, cities and user favorites" },
       { name: "Geolocation", purpose: "Location-based discovery and nearby recommendations" },
@@ -134,31 +135,32 @@ export const projects: ProjectDetail[] = [
     solution:
       "Implemented a role-based routing system at app startup that directs users to their dedicated module after login. Each role's feature tree is isolated as its own package within Clean Architecture, so changes to one role never affect another. Socket.IO rooms were scoped per-role to manage real-time events efficiently.",
     architecture: {
-      pattern: "Clean Architecture (Feature-first)",
+      pattern: "Feature-first Architecture",
       description:
-        "Each feature (auth, feed, orders, chat) is structured into its own folder with three layers. Features are kept independent — no cross-feature imports, only shared domain entities.",
+        "Feature-driven modular architecture organizing User, Seller, Driver, and Admin flows into independent feature directories (auth, feed, orders, chat, tracking). Each feature encapsulates its own Views, GetX controllers, and data repositories without cross-feature leakage.",
       layers: [
         {
-          name: "Presentation",
-          desc: "Widgets, pages, Bloc/Cubit — handles only UI logic and dispatches events.",
+          name: "Views & Pages",
+          desc: "Role-specific screens and widgets observing GetX reactive controllers for feed updates, chat, and order tracking.",
         },
         {
-          name: "Domain",
-          desc: "Use cases and entity models — pure Dart, zero Flutter dependency.",
+          name: "Controllers & Bindings",
+          desc: "GetxControllers managing reactive observables (.obs), Socket.IO live events, local cart caching, and route lifecycle.",
         },
         {
-          name: "Data",
-          desc: "Repository implementations, API clients, local cache (Hive/SharedPrefs).",
+          name: "Data Providers & Services",
+          desc: "REST API clients, Socket.IO client, Hive local cache, and Google Maps location service.",
         },
       ],
     },
     stateManagement: {
-      solution: "Bloc (flutter_bloc)",
+      solution: "GetX",
       reason:
-        "Chosen for predictable state transitions across complex flows like multi-step checkout, real-time chat and role-based navigation. BlocObserver used globally for debugging in development builds.",
+        "GetX provided reactive state management and route bindings across all four user roles. Reactive observables (.obs) kept real-time feeds, live chat, dynamic cart totals, and delivery tracking synchronized without boilerplate.",
     },
     stack: [
       { name: "Flutter", purpose: "Cross-platform UI framework" },
+      { name: "GetX", purpose: "Reactive state management, dependency injection & routing" },
       { name: "Firebase", purpose: "Push notifications & analytics" },
       { name: "Socket.IO", purpose: "Real-time messaging, feeds & live order updates" },
       { name: "REST API", purpose: "Core business logic — products, orders, user management" },
@@ -217,32 +219,32 @@ export const projects: ProjectDetail[] = [
     solution:
       "Built three Flutter apps (Customer, Vendor, Beautician) with a shared domain layer and role-specific repositories. Stripe payment intents are server-confirmed. Location-based discovery uses geohash queries. Admin operations run on a dedicated web dashboard for approvals, promos and platform management.",
     architecture: {
-      pattern: "Clean Architecture (Layer-first)",
+      pattern: "Feature-first Architecture (with GetX Bindings)",
       description:
-        "Shared domain models (Booking, Service, Vendor) sit in a common package. Customer, Vendor and Beautician each have isolated Flutter presentation and data layers. Admin is a separate web application consuming the same REST API.",
+        "Feature-first modular organization structured around core domains (Auth, Booking, Services, Store, Checkout, Earnings). Each feature encapsulates its own Views, GetxControllers, and GetX Bindings to lazily inject dependencies upon route entry, preventing memory bloat across the multi-role experience.",
       layers: [
         {
-          name: "Presentation",
-          desc: "Flutter apps per role with GetX controllers and bindings — Customer, Vendor, Beautician plus Admin web dashboard.",
+          name: "Views & Pages",
+          desc: "Role-specific UI (Customer, Vendor, Beautician) observing reactive controller states with zero manual subscription management.",
         },
         {
-          name: "Domain",
-          desc: "Shared Booking, Service and User entities — the single source of truth across all roles.",
+          name: "Controllers & Bindings",
+          desc: "GetxControllers managing booking state, cart, and earnings, initialized on-demand via route Bindings (`BindingsBuilder` / `Bindings`).",
         },
         {
-          name: "Data",
-          desc: "Role-filtered API calls, Stripe SDK on Customer app, and web admin endpoints for platform management.",
+          name: "Data Providers & Services",
+          desc: "REST API clients, Stripe payment intent handler, and local preferences injected as permanent GetX services.",
         },
       ],
     },
     stateManagement: {
-      solution: "GetX",
+      solution: "GetX (Reactive Controllers + Bindings)",
       reason:
-        "GetX handled state, dependency injection and navigation across three Flutter role apps. Reactive `.obs` variables and GetX controllers kept checkout, cart and dashboard flows lightweight without Bloc boilerplate.",
+        "GetX Bindings provide deterministic, route-based dependency injection. When a user navigates into booking, checkout, or vendor earnings, controllers are lazily instantiated and automatically disposed when navigating away, ensuring peak performance on low-end devices.",
     },
     stack: [
       { name: "Flutter", purpose: "Customer, Vendor and Beautician mobile apps — iOS & Android" },
-      { name: "GetX", purpose: "State management, dependency injection and route navigation" },
+      { name: "GetX", purpose: "Reactive controllers, GetX Bindings, dependency injection & routing" },
       { name: "Web Admin Panel", purpose: "Platform admin dashboard — not built in Flutter" },
       { name: "Stripe", purpose: "Payment processing with server-confirmed intents" },
       { name: "Geolocation", purpose: "Location-based discovery and geohash proximity queries" },
@@ -307,21 +309,21 @@ export const projects: ProjectDetail[] = [
     solution:
       "Built a dual-fetch mechanism for AI meal generation: Socket.IO delivers real-time updates the moment a job completes, with an HTTP polling fallback (3s intervals, 3-minute timeout) if the socket connection is unreliable. Each generation job is tracked by a JobId cached per day, with meals cached per tab (breakfast/lunch/dinner) to avoid redundant API calls, backed by shimmer loading states and automatic retry/timeout handling.",
     architecture: {
-      pattern: "Clean Architecture (Feature-first)",
+      pattern: "Feature-first Architecture",
       description:
-        "Each feature module — auth, home, meal plan, workout, progress, subscription — is self-contained with its own GetX binding, controllers, models and repository, isolated behind dependency injection so features never reach into each other directly.",
+        "Feature-driven modular architecture dividing the application into isolated feature modules — auth, home, meal plan, workout, progress, subscription. Each feature encapsulates its own GetX bindings, controllers, and models.",
       layers: [
         {
-          name: "Presentation",
-          desc: "Feature-scoped GetX controllers and widgets — onboarding flow, AI meal selection tabs, workout calendar, progress charts.",
+          name: "Views & UI",
+          desc: "Feature-scoped widgets and pages (AI meal selection, workout calendar, progress charts) reacting instantly to Obx/GetX observables.",
         },
         {
-          name: "Domain",
-          desc: "Repository interfaces abstract meal, workout and subscription data — pure Dart, independent of the transport used.",
+          name: "Controllers & Bindings",
+          desc: "GetxControllers managing reactive observables, tab switches, Socket.IO live updates, and route bindings.",
         },
         {
-          name: "Data",
-          desc: "Firebase Auth, Socket.IO client with polling fallback, Dio REST client and Get Storage for local job/meal caching.",
+          name: "Data & Services",
+          desc: "Dio REST client, Socket.IO streaming service, Firebase Auth, and Get Storage for caching.",
         },
       ],
     },
@@ -393,21 +395,21 @@ export const projects: ProjectDetail[] = [
     solution:
       "Modelled the trip as a finite state machine in GetX so invalid transitions never reach the UI. Streamed driver location over Socket.IO and rendered it on Google Maps with smoothing (EMA position/heading, speed-aware animation, short dead-reckoning coast) so motion stays continuous between packets. Google Directions API drives routing and distance/time-based fare; Stripe handles secure ride payments.",
     architecture: {
-      pattern: "Clean Architecture (Feature-first)",
+      pattern: "Feature-first Architecture",
       description:
-        "Ride, map, chat, wallet/payments and auth are isolated features. Controllers never reach across feature folders — they share only domain entities (Trip, RideState, LocationUpdate) through repositories.",
+        "Feature-first modular architecture dividing ride, map, chat, wallet/payments, and auth into self-contained feature packages. Each feature owns its views and GetX controllers, sharing core network and map services.",
       layers: [
         {
-          name: "Presentation",
-          desc: "Separate Passenger and Driver widget trees with GetX bindings — role UI never leaks across modules.",
+          name: "Views & UI",
+          desc: "Separate Passenger and Driver screens with GetX route bindings — zero cross-role UI leakage.",
         },
         {
-          name: "Domain",
-          desc: "RideState machine, Trip entity and pricing use cases — pure Dart, independent of Socket.IO or Maps SDKs.",
+          name: "Controllers & State Machine",
+          desc: "GetxControllers modeling the trip as an explicit finite state machine with reactive GPS stream listeners.",
         },
         {
-          name: "Data",
-          desc: "Socket.IO location and trip events, Google Maps / Directions clients, Stripe payment flows and REST repositories.",
+          name: "Data Providers & Services",
+          desc: "Socket.IO client, Google Maps / Directions APIs, Stripe payment client, and REST repositories.",
         },
       ],
     },
@@ -480,20 +482,20 @@ export const projects: ProjectDetail[] = [
     solution:
       "The ride lifecycle was modelled as a finite state machine using GetX controllers and reactive state. Driver location updates are emitted via Socket.IO at a 2-second interval and consumed directly into the map widget. Google Directions API handles routing and auto-pricing based on distance and estimated time.",
     architecture: {
-      pattern: "Clean Architecture (Feature-first)",
+      pattern: "Feature-first Architecture",
       description:
-        "The ride flow is isolated as a single feature with its own GetX controllers, use cases and repository. Map, wallet and auth are separate features that communicate only through domain entities — never direct widget calls.",
+        "Feature-first modular organization where Passenger and Driver flows are isolated feature packages (ride flow, map tracking, wallet, auth). Each feature manages its own views and GetX controllers, sharing core location and socket services.",
       layers: [
         {
-          name: "Presentation",
+          name: "Views & UI",
           desc: "Passenger and Driver screens are separate widget trees with GetX bindings — no shared UI components between roles.",
         },
         {
-          name: "Domain",
-          desc: "RideState machine, Trip entity and pricing use cases — pure Dart, fully testable.",
+          name: "Controllers & State Machine",
+          desc: "GetxControllers driving the finite state machine from request to trip completion, listening directly to Socket.IO streams.",
         },
         {
-          name: "Data",
+          name: "Data & Services",
           desc: "Socket.IO location streams, Google Directions API client and local wallet cache.",
         },
       ],
@@ -573,17 +575,17 @@ export const projects: ProjectDetail[] = [
     solution:
       "Clean Architecture with role-resolved routing at startup. Deep links are parsed at the router level — if the user is unauthenticated, the app stores the pending route, completes onboarding, then redirects. ShurjoPay's SDK was integrated with a custom repository abstraction to keep payment logic testable.",
     architecture: {
-      pattern: "Clean Architecture (MVVM-inspired)",
+      pattern: "Clean Architecture",
       description:
-        "Each role's dashboard is a self-contained module. Shared infrastructure (auth, deep linking, payment) sits in a core layer that modules depend on — never the reverse.",
+        "Modular Clean Architecture separating Presentation, Domain use cases, and Data repositories. Each role's dashboard (Farmer, Investor, Agent) is decoupled, depending on core shared layers for auth, networking, and payments.",
       layers: [
         {
           name: "Presentation",
-          desc: "Role dashboards (Farmer, Investor, Agent) are separate route branches with their own ViewModels.",
+          desc: "Role dashboards (Farmer, Investor, Agent) driven reactively by Cubit state transitions.",
         },
         {
           name: "Domain",
-          desc: "Campaign, Investment and Agent entities with use cases for funding, reporting and commission calculation.",
+          desc: "Campaign, Investment and Agent entities with pure Dart use cases for funding, reporting and commission calculation.",
         },
         {
           name: "Data",
@@ -592,12 +594,13 @@ export const projects: ProjectDetail[] = [
       ],
     },
     stateManagement: {
-      solution: "Provider + ChangeNotifier",
+      solution: "Bloc (Cubit)",
       reason:
-        "Chosen for its simplicity given the relatively straightforward data flows in this app. Campaign lists and investment summaries are read-heavy with infrequent updates — Provider's lightweight nature was a better fit than the overhead of Bloc.",
+        "Cubit provided lightweight, predictable state management without verbose event boilerplate. Cubits cleanly separated UI from business logic across the 3 roles, managing campaign loading, investment transitions, and filter states reliably.",
     },
     stack: [
       { name: "Flutter", purpose: "Cross-platform mobile app for all three roles" },
+      { name: "Bloc (Cubit)", purpose: "Predictable state management for role dashboards and campaigns" },
       { name: "ShurjoPay", purpose: "Investment payment processing for Bangladeshi users" },
       { name: "Socket.IO", purpose: "Real-time farmer–investor chat within active campaigns" },
       {
@@ -678,12 +681,13 @@ export const projects: ProjectDetail[] = [
       ],
     },
     stateManagement: {
-      solution: "Bloc (flutter_bloc)",
+      solution: "Bloc (Cubit)",
       reason:
-        "Payment flows have strict state requirements — you must not allow double submission or UI interaction during a pending gateway redirect. Bloc's immutable states enforced this at compile time.",
+        "Payment flows and premium reconciliation demand strict, immutable state transitions. Cubit eliminated double-submission during pending gateway redirects while keeping policy management, biometric auth, and transaction histories completely predictable.",
     },
     stack: [
       { name: "Flutter", purpose: "Customer app and Advisor app from a shared codebase" },
+      { name: "Bloc (Cubit)", purpose: "Predictable state management for payment flows and policy reconciliation" },
       { name: "bKash", purpose: "Mobile financial services payment gateway" },
       { name: "Nagad", purpose: "Government-backed MFS payment gateway" },
       { name: "REST API", purpose: "Policy management, premium records and advisor portfolio" },
@@ -762,12 +766,13 @@ export const projects: ProjectDetail[] = [
       ],
     },
     stateManagement: {
-      solution: "Bloc (flutter_bloc)",
+      solution: "Bloc (Cubit)",
       reason:
-        "Order, schedule and location data arrive asynchronously from multiple sources. Bloc made it straightforward to manage multi-step flows like order creation, purchase approval and scanner-based sales.",
+        "Order processing, attendance reporting, and IMEI scanning arrive asynchronously. Cubit ensured high responsiveness and predictable state transitions across multi-step flows like order creation, purchase approvals, and scanner-based sales on field devices.",
     },
     stack: [
       { name: "Flutter", purpose: "Cross-platform app for distributor and SR roles" },
+      { name: "Bloc (Cubit)", purpose: "Predictable state management for orders, returns, and live tracking" },
       { name: "Google Maps", purpose: "Live SR location tracking and field visit map" },
       { name: "REST API", purpose: "Orders, schedules, retailers, returns and attendance" },
       {
@@ -871,12 +876,13 @@ export const projects: ProjectDetail[] = [
       ],
     },
     stateManagement: {
-      solution: "Bloc (flutter_bloc)",
+      solution: "Bloc (Cubit)",
       reason:
-        "Problem submission and wallet checkout are multi-step flows with async payment confirmation. Bloc kept form state, wallet balance and payment status explicit and testable across both roles.",
+        "Problem submission, wallet balance mutations, and payment verification represent distinct discrete states. Cubit kept form validation, wallet balance updates, and asynchronous payment reconciliation cleanly structured and testable without unnecessary boilerplate.",
     },
     stack: [
       { name: "Flutter", purpose: "Cross-platform app for students and teachers" },
+      { name: "Bloc (Cubit)", purpose: "Predictable state management for problem flows, wallet, and checkout" },
       { name: "REST API", purpose: "Problems, user profiles, skills and transaction history" },
       { name: "Payment Gateway", purpose: "Wallet recharge and checkout for problem submissions" },
       { name: "Charts", purpose: "Homepage analytics — total, pending and solved problems" },
@@ -964,12 +970,13 @@ export const projects: ProjectDetail[] = [
       ],
     },
     stateManagement: {
-      solution: "Provider",
+      solution: "Bloc (Cubit)",
       reason:
-        "The app follows straightforward list/detail and form submission patterns with CRUD data flows. Provider kept the codebase lean for government officers using the app in the field.",
+        "Multi-level government approval flows, seedling batch tracking, and financial-year stock filtering require robust and auditable state transitions. Cubit enabled decoupled, predictable UI updates and testable business logic for field officers.",
     },
     stack: [
       { name: "Flutter", purpose: "Mobile app for Beat, Range, ACF and DFO officers" },
+      { name: "Bloc (Cubit)", purpose: "Predictable state management for multi-level approval and stock filtering" },
       { name: "REST API", purpose: "Government backend for raising, sales, stock and approvals" },
       { name: "Charts", purpose: "Dashboard analytics — raising, sales and category-wise stock" },
     ],

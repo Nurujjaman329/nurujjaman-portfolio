@@ -84,12 +84,12 @@ function Experience() {
   const tenure = experienceText();
   return (
     <Section
-      eyebrow="Experience"
+      eyebrow="04 — The Journey"
       title="My professional journey."
       description={`${tenure.charAt(0).toUpperCase()}${tenure.slice(1)}, 2 companies, 13+ production apps — across social commerce, beauty, ride-sharing, insurance, agri-tech and government sectors.`}
     >
       <div className="relative">
-        <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-primary via-accent to-transparent md:left-1/2" />
+        <div className="absolute left-4 top-2 bottom-2 w-px bg-border md:left-1/2" />
         <div className="space-y-10">
           {roles.map((r, i) => (
             <div
@@ -98,21 +98,21 @@ function Experience() {
                 i % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"
               }`}
             >
-              <div className="absolute left-4 top-6 h-3 w-3 -translate-x-1/2 rounded-full bg-gradient-to-br from-primary to-accent shadow-glow md:left-1/2" />
+              <div className="absolute left-4 top-6 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-background bg-primary shadow-xs md:left-1/2" />
               <div className="ml-12 md:ml-0">
-                <div className="rounded-2xl border border-border/60 bg-card-gradient p-6 shadow-card transition-spring hover:shadow-glow">
-                  <p className="font-mono text-xs uppercase tracking-widest text-primary">
+                <div className="rounded-2xl border border-border bg-card p-6 shadow-card transition-spring hover:-translate-y-0.5 hover:border-primary/40">
+                  <p className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
                     {r.period}
                   </p>
-                  <h3 className="mt-1 font-display text-xl font-semibold">{r.role}</h3>
-                  <p className="text-muted-foreground">
-                    {r.company} <span className="text-foreground/40">·</span> {r.location}
+                  <h3 className="mt-1 font-display text-xl font-bold text-foreground">{r.role}</h3>
+                  <p className="text-sm text-muted-foreground font-mono">
+                    {r.company} <span className="text-border">·</span> {r.location}
                   </p>
-                  <ul className="mt-4 space-y-2 text-sm text-foreground/85">
+                  <ul className="mt-4 space-y-2 text-sm text-foreground/85 leading-relaxed">
                     {r.bullets.map((b) => (
                       <li key={b} className="flex gap-2">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                        {b}
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{b}</span>
                       </li>
                     ))}
                   </ul>
@@ -126,13 +126,13 @@ function Experience() {
 
       {/* Education */}
       <div className="mt-20">
-        <h2 className="font-display text-2xl font-semibold mb-6">Education</h2>
+        <h2 className="font-display text-2xl font-bold tracking-tight text-foreground mb-6">Education</h2>
         <div className="grid gap-4">
           {education.map((e) => (
-            <div key={e.school} className="rounded-xl border border-border/60 bg-card-gradient p-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-primary">{e.period}</p>
-              <h3 className="mt-1 font-display text-lg font-semibold">{e.degree}</h3>
-              <p className="text-muted-foreground">{e.school}</p>
+            <div key={e.school} className="rounded-2xl border border-border bg-card p-6 shadow-xs">
+              <p className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">{e.period}</p>
+              <h3 className="mt-1 font-display text-lg font-bold text-foreground">{e.degree}</h3>
+              <p className="text-sm text-muted-foreground">{e.school}</p>
             </div>
           ))}
         </div>
@@ -140,22 +140,24 @@ function Experience() {
 
       {/* Professional Courses */}
       <div className="mt-12">
-        <h2 className="font-display text-2xl font-semibold mb-6">Professional Courses</h2>
+        <h2 className="font-display text-2xl font-bold tracking-tight text-foreground mb-6">Professional Credentials</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {courses.map((e) => (
-            <div key={e.school} className="rounded-xl border border-border/60 bg-card-gradient p-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-primary">{e.period}</p>
-              <h3 className="mt-1 font-display text-base font-semibold">{e.degree}</h3>
-              <p className="text-sm text-muted-foreground">{e.school}</p>
-              {e.note && <p className="mt-2 text-xs text-foreground/70">{e.note}</p>}
+            <div key={e.school} className="rounded-2xl border border-border bg-card p-6 shadow-xs flex flex-col justify-between">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">{e.period}</p>
+                <h3 className="mt-1 font-display text-base font-bold text-foreground">{e.degree}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{e.school}</p>
+                {e.note && <p className="mt-2 text-xs font-mono text-muted-foreground">{e.note}</p>}
+              </div>
               {e.verifyUrl && (
                 <a
                   href={e.verifyUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                  className="mt-4 inline-flex items-center gap-1 font-mono text-xs text-primary font-semibold hover:underline"
                 >
-                  Verify certificate <ExternalLink className="h-3 w-3" />
+                  Verify credential <ExternalLink className="h-3 w-3" />
                 </a>
               )}
             </div>
@@ -165,14 +167,14 @@ function Experience() {
 
       {/* Extra Curricular */}
       <div className="mt-12">
-        <h2 className="font-display text-2xl font-semibold mb-6">Extra-Curricular</h2>
-        <ul className="space-y-2 text-foreground/85">
-          <li className="flex gap-2">
-            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" /> Participation in DCC
+        <h2 className="font-display text-2xl font-bold tracking-tight text-foreground mb-6">Honors &amp; Contests</h2>
+        <ul className="space-y-2 text-sm text-foreground/85">
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" /> Participation in DCC
             CSE Digital Week 2020
           </li>
-          <li className="flex gap-2">
-            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" /> Participation in DCC
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" /> Participation in DCC
             Inter Dept. Programming Contest 2019
           </li>
         </ul>

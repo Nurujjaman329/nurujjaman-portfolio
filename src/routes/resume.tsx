@@ -111,7 +111,7 @@ function Resume() {
             period=""
             bullets={[
               "City discovery platform surfacing location-aware events, exclusive specials, category filters, and Firebase push alerts.",
-              "Shipped live on both App Store and Google Play with Bloc state management and geolocation discovery.",
+              "Shipped live on both App Store and Google Play with GetX reactive state management and geolocation discovery.",
             ]}
           />
           <Job
@@ -120,7 +120,7 @@ function Resume() {
             period=""
             bullets={[
               "Multi-role commerce system (Customer, Seller, Driver, Admin) with real-time chat, live feeds, local cart caching, and end-to-end delivery tracking.",
-              "Built real-time messaging, feeds and order updates using Socket.IO and Hive local persistence.",
+              "Built real-time messaging, feeds and order updates using Socket.IO, GetX state management, and Hive local persistence.",
             ]}
           />
           <Job
