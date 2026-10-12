@@ -1,122 +1,187 @@
-import { useEffect, useRef, useState } from "react";
-import { Smartphone, Zap, CheckCircle2, ChevronRight, Layers, CreditCard, Cloud, Settings, X } from "lucide-react";
+import { useEffect, useRef, useState, type ComponentType, type SVGProps } from "react";
+import { Boxes, Database, Layers, type LucideIcon } from "lucide-react";
+import { Bkash } from "react-bangla-pay-icons";
+import {
+  siAppstore,
+  siDart,
+  siFirebase,
+  siFlutter,
+  siGetx,
+  siGooglemaps,
+  siGoogleplay,
+  siSocketdotio,
+  siStripe,
+  type SimpleIcon,
+} from "simple-icons";
 
 interface TechItem {
   id: string;
   name: string;
+  label: string;
   category: "mobile" | "arch" | "backend" | "payments" | "tools";
-  iconText: string;
+  icon?: LucideIcon;
+  brand?: SimpleIcon | SimpleIcon[];
+  logo?: ComponentType<SVGProps<SVGSVGElement>>;
   badgeColor: string;
   summary: string;
   usedIn: string;
+}
+
+const brandTile = "border border-border bg-white text-foreground";
+
+function TechGlyph({
+  item,
+  className,
+}: {
+  item: TechItem;
+  className: string;
+}) {
+  if (item.logo) {
+    const Logo = item.logo;
+    return <Logo width="100%" height="100%" className="h-7 w-10" aria-hidden />;
+  }
+
+  if (!item.brand) {
+    if (!item.icon) return null;
+    const Icon = item.icon;
+    return <Icon className={className} />;
+  }
+
+  const marks = Array.isArray(item.brand) ? item.brand : [item.brand];
+  return (
+    <span className="flex items-center justify-center gap-0.5">
+      {marks.map((mark) => (
+        <svg
+          key={mark.title}
+          viewBox="0 0 24 24"
+          className={marks.length > 1 ? "h-4 w-4" : className}
+          aria-hidden
+        >
+          <path fill={`#${mark.hex}`} d={mark.path} />
+        </svg>
+      ))}
+    </span>
+  );
 }
 
 const techItems: TechItem[] = [
   {
     id: "flutter",
     name: "Flutter",
+    label: "Flutter",
     category: "mobile",
-    iconText: "F",
-    badgeColor: "bg-emerald-800 text-white",
+    brand: siFlutter,
+    badgeColor: brandTile,
     summary: "Primary cross-platform framework building high-performance 60fps applications for iOS and Android.",
     usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Meghna Life",
   },
   {
     id: "dart",
     name: "Dart",
+    label: "Dart",
     category: "mobile",
-    iconText: "D",
-    badgeColor: "bg-teal-700 text-white",
+    brand: siDart,
+    badgeColor: brandTile,
     summary: "Strong null-safety, asynchronous streams, custom isolates, and platform channel interop.",
     usedIn: "Every production app",
   },
   {
     id: "bloc",
     name: "Bloc / Cubit",
+    label: "Bloc",
     category: "arch",
-    iconText: "B",
-    badgeColor: "bg-blue-800 text-white",
+    icon: Boxes,
+    badgeColor: brandTile,
     summary: "Predictable event-driven state management enforcing strict immutability, testability, and audit trails.",
     usedIn: "Meghna Life, MyKrishi, DMS, Edex-365, Nursery Management",
   },
   {
     id: "getx",
     name: "GetX",
+    label: "GetX",
     category: "arch",
-    iconText: "G",
-    badgeColor: "bg-purple-800 text-white",
+    brand: siGetx,
+    badgeColor: brandTile,
     summary: "High-velocity reactive state management, micro-benchmarked dependency injection, and routing.",
     usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber",
   },
   {
     id: "clean-arch",
     name: "Clean Architecture",
+    label: "Clean",
     category: "arch",
-    iconText: "CA",
-    badgeColor: "bg-amber-800 text-white",
+    icon: Layers,
+    badgeColor: brandTile,
     summary: "Feature-first separation into Presentation, Domain (use cases), and Data layers for zero vendor lock-in.",
     usedIn: "Meghna Life, MyKrishi, DMS, Edex-365, Nursery Management",
   },
   {
     id: "socketio",
     name: "Socket.IO",
+    label: "Socket",
     category: "backend",
-    iconText: "SI",
-    badgeColor: "bg-slate-800 text-white",
+    brand: siSocketdotio,
+    badgeColor: brandTile,
     summary: "Real-time bidirectional event pipeline with heartbeat recovery and offline polling fallbacks.",
     usedIn: "Fouta App, BloodFit, Lyfuber",
   },
   {
     id: "maps",
     name: "Google Maps API",
+    label: "Maps",
     category: "mobile",
-    iconText: "GM",
-    badgeColor: "bg-red-800 text-white",
+    brand: siGooglemaps,
+    badgeColor: brandTile,
     summary: "Live camera tracking, custom map styles, route polylines, and distance matrix pricing.",
     usedIn: "Lyfuber, Fouta App, DMS",
   },
   {
     id: "firebase",
     name: "Firebase Suite",
+    label: "Firebase",
     category: "backend",
-    iconText: "FB",
-    badgeColor: "bg-amber-700 text-white",
+    brand: siFirebase,
+    badgeColor: brandTile,
     summary: "FCM Push Notifications, Google Auth, Crashlytics, and real-time remote configuration.",
     usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber",
   },
   {
     id: "stripe",
     name: "Stripe & IAP",
+    label: "Stripe",
     category: "payments",
-    iconText: "S$",
-    badgeColor: "bg-indigo-700 text-white",
+    brand: siStripe,
+    badgeColor: brandTile,
     summary: "Server-confirmed payment intents, 3D-Secure challenges, and App Store / Google Play In-App Purchases.",
     usedIn: "TNP Beauty, BloodFit, Lyfuber",
   },
   {
     id: "mfs",
     name: "bKash & Nagad",
+    label: "bKash",
     category: "payments",
-    iconText: "৳",
-    badgeColor: "bg-pink-800 text-white",
+    logo: Bkash,
+    badgeColor: brandTile,
     summary: "Direct mobile financial services gateway integration automating digital policy premiums in Bangladesh.",
     usedIn: "Meghna Life",
   },
   {
     id: "hive",
     name: "Hive / Local DB",
+    label: "Hive",
     category: "arch",
-    iconText: "H",
-    badgeColor: "bg-yellow-800 text-white",
+    icon: Database,
+    badgeColor: brandTile,
     summary: "Local storage for offline cart persistence and cached feeds.",
     usedIn: "Fouta App",
   },
   {
     id: "stores",
     name: "App Store & Play",
+    label: "Stores",
     category: "tools",
-    iconText: "ASC",
-    badgeColor: "bg-zinc-800 text-white",
+    brand: [siAppstore, siGoogleplay],
+    badgeColor: brandTile,
     summary: "End-to-end publishing lifecycle: provisioning profiles, TestFlight, bundle signing, and store compliance.",
     usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Meghna Life",
   },
@@ -188,7 +253,7 @@ export function PhoneToolkit() {
                 <span
                   className={`flex h-11 w-11 items-center justify-center rounded-xl font-display text-sm font-bold shadow-xs ${selectedTech.badgeColor}`}
                 >
-                  {selectedTech.iconText}
+                  <TechGlyph item={selectedTech} className="h-6 w-6" />
                 </span>
                 <div>
                   <h3 className="font-display text-lg font-bold text-foreground">
@@ -301,10 +366,10 @@ export function PhoneToolkit() {
                         : "opacity-90 group-hover:opacity-100"
                     }`}
                   >
-                    <span className="font-display text-xs font-bold">{item.iconText}</span>
+                    <TechGlyph item={item} className="h-6 w-6" />
                   </div>
-                  <span className="font-mono text-[10px] leading-tight text-foreground/80 line-clamp-1">
-                    {item.name}
+                  <span className="max-w-full text-center font-mono text-[10px] leading-tight text-foreground/80">
+                    {item.label}
                   </span>
                 </button>
               );
