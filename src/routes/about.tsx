@@ -10,10 +10,10 @@ export const Route = createFileRoute("/about")({
       { title: "About — MD. Nurujjaman" },
       {
         name: "description",
-        content: `Flutter Developer based in Dhaka with ${experienceText()} of experience in clean architecture and cross-platform mobile development.`,
+        content: `Software Engineer (Mobile) based in Dhaka with ${experienceText()} of experience in clean architecture, Flutter, and cross-platform mobile development.`,
       },
       { property: "og:title", content: "About MD. Nurujjaman" },
-      { property: "og:description", content: "Flutter Developer based in Dhaka, Bangladesh." },
+      { property: "og:description", content: "Software Engineer (Mobile) based in Dhaka, Bangladesh." },
     ],
   }),
   component: About,
@@ -49,35 +49,34 @@ const facts = [
 function About() {
   return (
     <Section
-      eyebrow="About"
-      title="Flutter developer & mobile craftsman."
-      description={`Experienced Flutter Developer with ${experienceText()} building high-performance, cross-platform mobile applications. Passionate about clean architecture, responsive UI and shipping scalable, user-friendly products.`}
+      eyebrow="01 — About"
+      title="Software engineer & mobile craftsman."
+      description={`Software Engineer (Mobile) with ${experienceText()} building high-performance, cross-platform mobile applications. Focused on clean architecture, responsive UI, real-time systems, and shipping scalable, user-friendly products.`}
     >
       <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-        <div className="space-y-6 text-foreground/90 leading-relaxed">
+        <div className="space-y-6 text-foreground/85 leading-relaxed">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
             <img
               src={portrait}
               alt="MD. Nurujjaman"
-              className="mx-auto h-40 w-40 shrink-0 rounded-2xl border border-border/60 object-cover shadow-card sm:mx-0 sm:h-44 sm:w-44"
+              className="mx-auto h-40 w-40 shrink-0 rounded-2xl border border-border object-cover shadow-card sm:mx-0 sm:h-44 sm:w-44"
             />
             <p>
-              I'm <span className="text-primary font-semibold">MD. Nurujjaman</span>, a Flutter
-              Developer based in Mohakhali, Dhaka. I specialize in building cross-platform mobile
-              applications with clean architecture, responsive UI, and integrations like push
-              notifications, Google Maps, Socket.IO, deep linking and secure payment gateways.
+              I’m <span className="text-foreground font-semibold">MD. Nurujjaman</span>, a Software
+              Engineer (Mobile) based in Mohakhali, Dhaka. I build cross-platform mobile
+              applications with Clean Architecture, responsive UI, and robust integrations including
+              push notifications, Google Maps, Socket.IO, deep linking, and secure payment gateways.
             </p>
           </div>
           <p>
-            Across {experienceText()} I've shipped 13+ production-grade apps — 6 live on the App
-            Store and Google Play — across social commerce, beauty, ride-sharing, agri-tech,
-            insurance, education and government sectors. I love collaborating with innovative teams
-            to deliver scalable, user-friendly solutions while continuously sharpening my craft.
+            Across {experienceText()} I’ve shipped 13+ production-grade apps — 6 live on the App
+            Store and Google Play — spanning social commerce, beauty marketplaces, ride-sharing,
+            agri-tech, enterprise insurance, and national GovTech platforms.
           </p>
           <p>
-            I hold a B.Sc. in Computer Science & Engineering from{" "}
-            <span className="text-primary font-semibold">Dhaka City College</span> (National
-            University, Bangladesh) and have completed professional courses in Flutter from
+            I hold a B.Sc. in Computer Science &amp; Engineering from{" "}
+            <span className="text-foreground font-semibold">Dhaka City College</span> (National
+            University, Bangladesh) and hold professional credentials in Flutter from
             BASIS-SEIP and CSE Fundamentals from Phitron.
           </p>
 
@@ -85,11 +84,11 @@ function About() {
             {facts.map((f) => (
               <div
                 key={f.label}
-                className="rounded-xl border border-border/60 bg-card-gradient p-4 text-center"
+                className="rounded-xl border border-border bg-card p-4 text-center shadow-xs"
               >
                 <f.icon className="mx-auto h-5 w-5 text-primary" />
-                <div className="mt-2 font-display text-2xl font-bold">{f.value}</div>
-                <div className="text-xs text-muted-foreground">{f.label}</div>
+                <div className="mt-2 font-display text-2xl font-bold text-foreground">{f.value}</div>
+                <div className="text-xs text-muted-foreground font-mono">{f.label}</div>
               </div>
             ))}
           </div>
@@ -99,12 +98,15 @@ function About() {
           {skills.map((s) => (
             <div
               key={s.group}
-              className="rounded-xl border border-border/60 bg-card-gradient p-6 shadow-card"
+              className="rounded-2xl border border-border bg-card p-6 shadow-card"
             >
-              <h3 className="font-display text-lg font-semibold text-primary">{s.group}</h3>
+              <h3 className="font-display text-base font-bold text-foreground">{s.group}</h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {s.items.map((it) => (
-                  <span key={it} className="rounded-md bg-secondary/70 px-3 py-1 font-mono text-xs">
+                  <span
+                    key={it}
+                    className="rounded-md border border-border bg-surface px-3 py-1 font-mono text-xs text-foreground/80"
+                  >
                     {it}
                   </span>
                 ))}

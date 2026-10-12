@@ -1,8 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight, Layers, Zap, Package, X, Images } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Layers, Zap, Package, X, Images, CheckCircle2 } from "lucide-react";
 import { StoreLinks } from "@/components/portfolio/StoreLinks";
 import { fetchProject } from "@/lib/firestore-projects";
+import { projects as staticProjects } from "@/data/projects";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: async ({ params }) => {
@@ -17,26 +18,43 @@ function ProjectDetail() {
   const project = Route.useLoaderData();
   const images = project.images ?? [];
 
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
-      <Link
-        to="/projects"
-        className="mb-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowLeft className="h-3.5 w-3.5" /> All Projects
-      </Link>
+  const currentIndex = staticProjects.findIndex((p) => p.slug === project.slug);
+  const prevProject = currentIndex > 0 ? staticProjects[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex >= 0 && currentIndex < staticProjects.length - 1
+      ? staticProjects[currentIndex + 1]
+      : null;
 
+  return (
+    <div className="mx-auto max-w-4xl px-4 py-12">
+      {/* Breadcrumb Navigation */}
+      <div className="mb-8 flex items-center justify-between">
+        <Link
+          to="/projects"
+          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" /> All Projects
+        </Link>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Home ↗
+        </Link>
+      </div>
+
+      {/* Header */}
       <header className="mb-10">
-        <div className={`mb-4 h-px w-16 bg-gradient-to-r ${project.accent}`} />
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">{project.tag}</p>
-        <h1 className="mt-2 font-display text-4xl font-bold text-foreground">{project.name}</h1>
-        <p className="mt-3 text-lg text-muted-foreground">{project.tagline}</p>
-        <div className="mt-5 flex flex-wrap items-center gap-4 text-sm">
-          <span className="text-muted-foreground">{project.company}</span>
+        <div className={`mb-4 h-1 w-12 rounded-full bg-gradient-to-r ${project.accent}`} />
+        <p className="font-mono text-xs font-semibold uppercase tracking-widest text-primary">{project.tag}</p>
+        <h1 className="mt-2 font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground">{project.name}</h1>
+        <p className="mt-3 text-lg text-foreground/80 leading-relaxed font-sans">{project.tagline}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-3 text-xs">
+          <span className="font-mono text-muted-foreground">{project.company}</span>
           <span className="text-border">·</span>
-          <span className="text-muted-foreground">{project.period}</span>
+          <span className="font-mono text-muted-foreground">{project.period}</span>
           <span className="text-border">·</span>
-          <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-0.5 font-mono text-xs text-primary">
+          <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-0.5 font-mono text-xs font-semibold text-primary">
             {project.status}
           </span>
           {project.storeLink && (
@@ -45,20 +63,14 @@ function ProjectDetail() {
         </div>
       </header>
 
+      {/* Screenshots */}
       <div className="mb-12">
-        <Block title="Screenshots" icon={<Images className="h-4 w-4" />}>
+        <Block title="Screenshots & Interface" icon={<Images className="h-4 w-4" />}>
           {images.length > 0 ? (
             <ScreenshotGallery images={images} projectName={project.name} />
           ) : (
-            <div className="grid grid-cols-3 gap-4">
-              {[1, 2, 3].map((n) => (
-                <div
-                  key={n}
-                  className="flex h-48 items-center justify-center rounded-xl border border-dashed border-border/60 bg-secondary/30"
-                >
-                  <p className="font-mono text-xs text-muted-foreground/50">Screenshot {n}</p>
-                </div>
-              ))}
+            <div className="rounded-2xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+              Production screenshots available upon request.
             </div>
           )}
         </Block>
@@ -66,21 +78,23 @@ function ProjectDetail() {
 
       <div className="space-y-10">
         <Block title="Overview" icon={<Layers className="h-4 w-4" />}>
-          <p className="text-foreground/80 leading-relaxed">{project.overview}</p>
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-card">
+            <p className="text-foreground/85 leading-relaxed text-base">{project.overview}</p>
+          </div>
         </Block>
 
         <div className="grid gap-6 sm:grid-cols-2">
-          <div className="rounded-xl border border-border/60 bg-secondary/20 p-6">
-            <p className="mb-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-xs">
+            <p className="mb-2 font-mono text-xs uppercase tracking-widest text-accent font-semibold">
               The Challenge
             </p>
-            <p className="text-sm text-foreground/80 leading-relaxed">{project.challenge}</p>
+            <p className="text-sm text-foreground/85 leading-relaxed">{project.challenge}</p>
           </div>
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-6">
-            <p className="mb-2 font-mono text-xs uppercase tracking-widest text-primary">
+          <div className="rounded-2xl border border-primary/30 bg-card p-6 shadow-xs">
+            <p className="mb-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
               The Solution
             </p>
-            <p className="text-sm text-foreground/80 leading-relaxed">{project.solution}</p>
+            <p className="text-sm text-foreground/85 leading-relaxed">{project.solution}</p>
           </div>
         </div>
 
@@ -89,37 +103,37 @@ function ProjectDetail() {
             {project.highlights.map((h) => (
               <div
                 key={h.title}
-                className="rounded-xl border border-border/60 bg-card-gradient p-5"
+                className="rounded-xl border border-border bg-card p-5 shadow-xs transition-spring hover:border-primary/40"
               >
-                <p className="font-semibold text-foreground">{h.title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{h.desc}</p>
+                <p className="font-display font-semibold text-foreground">{h.title}</p>
+                <p className="mt-1 text-sm text-foreground/75 leading-relaxed">{h.desc}</p>
               </div>
             ))}
           </div>
         </Block>
 
         <Block title="Architecture" icon={<Layers className="h-4 w-4" />}>
-          <div className="rounded-xl border border-border/60 bg-card-gradient p-6">
-            <span className="rounded-md bg-primary/10 px-3 py-1 font-mono text-xs font-semibold text-primary">
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-card">
+            <span className="inline-block rounded-md border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-xs font-semibold text-primary">
               {project.architecture.pattern}
             </span>
-            <p className="mb-5 mt-4 text-sm text-foreground/80 leading-relaxed">
+            <p className="mb-6 mt-4 text-sm text-foreground/85 leading-relaxed">
               {project.architecture.description}
             </p>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {project.architecture.layers.map((layer, i) => (
                 <div key={layer.name} className="flex gap-4">
                   <div className="flex flex-col items-center">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-xs font-bold text-primary">
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary font-mono text-xs font-bold text-primary-foreground shadow-xs">
                       {i + 1}
                     </div>
                     {i < project.architecture.layers.length - 1 && (
-                      <div className="mt-1 h-full w-px bg-border/60" />
+                      <div className="mt-2 h-full w-px bg-border" />
                     )}
                   </div>
-                  <div className="pb-4">
-                    <p className="font-semibold text-foreground">{layer.name}</p>
-                    <p className="mt-0.5 text-sm text-muted-foreground">{layer.desc}</p>
+                  <div className="pb-3">
+                    <p className="font-display font-semibold text-foreground">{layer.name}</p>
+                    <p className="mt-0.5 text-sm text-foreground/75 leading-relaxed">{layer.desc}</p>
                   </div>
                 </div>
               ))}
@@ -128,11 +142,11 @@ function ProjectDetail() {
         </Block>
 
         <Block title="State Management" icon={<Zap className="h-4 w-4" />}>
-          <div className="rounded-xl border border-border/60 bg-card-gradient p-6">
-            <span className="rounded-md bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent">
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-card">
+            <span className="inline-block rounded-md border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent">
               {project.stateManagement.solution}
             </span>
-            <p className="mt-4 text-sm text-foreground/80 leading-relaxed">
+            <p className="mt-4 text-sm text-foreground/85 leading-relaxed">
               {project.stateManagement.reason}
             </p>
           </div>
@@ -143,36 +157,75 @@ function ProjectDetail() {
             {project.stack.map((s) => (
               <div
                 key={s.name}
-                className="flex items-start gap-3 rounded-xl border border-border/60 bg-card-gradient p-4"
+                className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-xs"
               >
-                <span className="mt-0.5 rounded-md bg-secondary/70 px-2 py-0.5 font-mono text-xs shrink-0">
+                <span className="mt-0.5 rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs font-semibold shrink-0 text-foreground">
                   {s.name}
                 </span>
-                <span className="text-sm text-muted-foreground">{s.purpose}</span>
+                <span className="text-xs text-foreground/75 leading-relaxed">{s.purpose}</span>
               </div>
             ))}
           </div>
         </Block>
 
-        <Block title="Outcome" icon={<Zap className="h-4 w-4" />}>
-          <ul className="space-y-2">
-            {project.results.map((r) => (
-              <li key={r} className="flex items-start gap-3 text-foreground/80">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                {r}
-              </li>
-            ))}
-          </ul>
+        <Block title="Outcome & Impact" icon={<CheckCircle2 className="h-4 w-4" />}>
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-card">
+            <ul className="space-y-3">
+              {project.results.map((r) => (
+                <li key={r} className="flex items-start gap-3 text-sm text-foreground/85 leading-relaxed">
+                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    ✓
+                  </span>
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Block>
       </div>
 
-      <div className="mt-12 border-t border-border/60 pt-8">
+      {/* Prev / Next Project Navigation */}
+      <div className="mt-16 border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        {prevProject ? (
+          <Link
+            to="/projects/$slug"
+            params={{ slug: prevProject.slug }}
+            className="group flex flex-col text-left"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground flex items-center gap-1 group-hover:text-primary transition-colors">
+              <ArrowLeft className="h-3 w-3" /> Previous Project
+            </span>
+            <span className="font-display text-base font-bold text-foreground group-hover:text-primary transition-colors">
+              {prevProject.name}
+            </span>
+          </Link>
+        ) : (
+          <div />
+        )}
+
         <Link
           to="/projects"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+          className="rounded-full border border-border bg-surface px-4 py-2 font-mono text-xs font-semibold text-foreground hover:bg-muted/70 transition-colors shadow-xs"
         >
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to all projects
+          All 13+ Projects
         </Link>
+
+        {nextProject ? (
+          <Link
+            to="/projects/$slug"
+            params={{ slug: nextProject.slug }}
+            className="group flex flex-col text-right"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground flex items-center justify-end gap-1 group-hover:text-primary transition-colors">
+              Next Project <ArrowRight className="h-3 w-3" />
+            </span>
+            <span className="font-display text-base font-bold text-foreground group-hover:text-primary transition-colors">
+              {nextProject.name}
+            </span>
+          </Link>
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   );
