@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Smartphone, Zap, CheckCircle2, ChevronRight, Layers, CreditCard, Cloud, Settings, X } from "lucide-react";
 
 interface TechItem {
@@ -134,6 +134,30 @@ const categories = [
 export function PhoneToolkit() {
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const [selectedTech, setSelectedTech] = useState<TechItem | null>(techItems[0]);
+  const filterScrollRef = useRef<HTMLDivElement>(null);
+  const [filterEdges, setFilterEdges] = useState({ left: false, right: true });
+
+  useEffect(() => {
+    const el = filterScrollRef.current;
+    if (!el) return;
+
+    function updateEdges() {
+      const node = filterScrollRef.current;
+      if (!node) return;
+      setFilterEdges({
+        left: node.scrollLeft > 4,
+        right: node.scrollLeft + node.clientWidth < node.scrollWidth - 4,
+      });
+    }
+
+    updateEdges();
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, []);
 
   const filtered = techItems.filter((item) =>
     activeFilter === "all" ? true : item.category === activeFilter
@@ -198,7 +222,7 @@ export function PhoneToolkit() {
 
       {/* Right Smartphone Screen Mockup */}
       <div className="flex justify-center">
-        <div className="relative w-full max-w-[340px] rounded-[40px] border-4 border-foreground/15 bg-card p-4 shadow-elegant">
+        <div className="relative w-full max-w-[340px] overflow-hidden rounded-[40px] border-4 border-foreground/15 bg-card p-4 shadow-elegant">
           {/* Phone Speaker & Camera Notch */}
           <div className="mx-auto mb-4 flex h-4 w-28 items-center justify-center gap-2 rounded-full bg-surface">
             <div className="h-1.5 w-8 rounded-full bg-border" />
@@ -223,21 +247,39 @@ export function PhoneToolkit() {
             </div>
           </div>
 
-          {/* Category Filter Pills on Phone Screen */}
-          <div className="mb-4 flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveFilter(cat.id)}
-                className={`whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[10px] font-semibold transition-all ${
-                  activeFilter === cat.id
-                    ? "bg-primary text-primary-foreground shadow-xs"
-                    : "border border-border bg-surface text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          {/* Category filters scroll sideways inside the phone */}
+          <div className="relative mb-4 min-w-0">
+            <div
+              ref={filterScrollRef}
+              className="toolkit-scroll flex gap-1.5 overflow-x-auto pb-2"
+            >
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={(e) => {
+                    setActiveFilter(cat.id);
+                    const scroller = filterScrollRef.current;
+                    const chip = e.currentTarget;
+                    if (!scroller) return;
+                    const left = chip.offsetLeft - (scroller.clientWidth - chip.offsetWidth) / 2;
+                    scroller.scrollTo({ left, behavior: "smooth" });
+                  }}
+                  className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[10px] font-semibold transition-all ${
+                    activeFilter === cat.id
+                      ? "bg-primary text-primary-foreground shadow-xs"
+                      : "border border-border bg-surface text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+            {filterEdges.left && (
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-5 bg-gradient-to-r from-card to-transparent" />
+            )}
+            {filterEdges.right && (
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-card to-transparent" />
+            )}
           </div>
 
           {/* App Icons Grid */}

@@ -158,6 +158,21 @@
     transition: var(--transition-spring);
   }
 
+  .toolkit-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .toolkit-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+  .toolkit-scroll::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+  }
+  .toolkit-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   .scrollbar-hide {
     scrollbar-width: none;
     -ms-overflow-style: none;
