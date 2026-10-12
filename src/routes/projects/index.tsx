@@ -18,7 +18,7 @@ function Projects() {
     <Section
       eyebrow="03 — Project Archive"
       title="Every project shipped."
-      description="13+ Flutter apps shipped — 6 live on the App Store and Google Play — spanning social commerce, beauty, ride-sharing, enterprise logistics for Nokia & Honor, agri-tech, fintech, edtech and national GovTech."
+      description="13+ Flutter apps shipped — 7 live on the App Store and Google Play — spanning social commerce, beauty, ride-sharing, enterprise logistics for Nokia & Honor, agri-tech, fintech, edtech and national GovTech."
     >
       <div className="mb-8 flex items-center justify-between">
         <Link

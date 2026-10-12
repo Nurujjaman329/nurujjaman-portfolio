@@ -76,7 +76,7 @@ function Resume() {
           <p className="text-foreground/85 leading-relaxed">
             Flutter Developer with 3 years of experience shipping scalable, cross-platform mobile apps across
             social commerce, beauty, fitness, ride-sharing, agri-tech, and enterprise GovTech. Delivered 13+ production
-            apps, with 6 live on the App Store and Google Play (Presentini, Fouta, TNP Beauty, BloodFit, Lyfuber, Meghna). Proven expertise in Clean Architecture,
+            apps, with 7 live on the App Store and Google Play (Presentini, Fouta, TNP Beauty, BloodFit, Lyfuber, Ride Sharing App, Meghna). Proven expertise in Clean Architecture,
             Socket.IO real-time communication, Google Maps navigation, and multi-gateway payments (Stripe, bKash, Nagad, ShurjoPay).
           </p>
         </Block>
@@ -148,6 +148,15 @@ function Resume() {
             bullets={[
               "Passenger and driver apps with a ride state machine, live map tracking, and in-trip messaging.",
               "Google Directions routing and Stripe payments on the completed-ride path.",
+            ]}
+          />
+          <Job
+            role="Ride Sharing App — Shared Rides"
+            company="Sparktech Agency · Live on Google Play"
+            period=""
+            bullets={[
+              "Passenger and driver app with live tracking, in-trip chat, and wallet payments.",
+              "Live on Google Play as A dedo, with Socket.IO location updates and Google Directions auto-pricing.",
             ]}
           />
           <Job

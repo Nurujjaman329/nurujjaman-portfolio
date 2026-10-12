@@ -469,12 +469,13 @@ export const projects: ProjectDetail[] = [
     slug: "ride-sharing-app",
     name: "Ride Sharing App",
     tag: "Transport",
-    tagline: "A dual-role ride platform with live tracking, wallet management and auto-pricing.",
+    tagline: "A dual-role ride platform with live tracking, wallet management and auto-pricing. Live on Google Play.",
     company: "Sparktech Agency",
     period: "2024",
-    status: "Internal / Client Delivery",
+    status: "Live on Google Play",
     accent: "from-primary to-accent",
-    storeLink: false,
+    storeLink: true,
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.maurojesus.adedo",
     overview:
       "A full-featured ride sharing app with separate Passenger and Driver experiences. Passengers request rides, track drivers in real time and pay via wallet. Drivers receive ride requests, navigate to pickups and manage their earnings — all with in-trip chat for coordination.",
     challenge:
@@ -553,6 +554,7 @@ export const projects: ProjectDetail[] = [
       "/projects/ride-sharing-app/chats.png",
     ],
     results: [
+      "Live on Google Play (com.maurojesus.adedo).",
       "Delivered to client with full Passenger and Driver flows operational.",
       "Real-time location tracking running reliably in QA at 2s update intervals.",
       "Auto-pricing integrated with Google Directions API.",

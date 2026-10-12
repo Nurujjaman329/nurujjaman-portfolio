@@ -69,7 +69,7 @@ function About() {
             </p>
           </div>
           <p>
-            Across {experienceText()} I’ve shipped 13+ production-grade apps — 6 live on the App
+            Across {experienceText()} I’ve shipped 13+ production-grade apps — 7 live on the App
             Store and Google Play — spanning social commerce, beauty marketplaces, ride-sharing,
             agri-tech, enterprise insurance, and national GovTech platforms.
           </p>

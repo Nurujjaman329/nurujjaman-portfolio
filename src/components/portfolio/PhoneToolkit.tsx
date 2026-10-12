@@ -73,7 +73,7 @@ const techItems: TechItem[] = [
     brand: siFlutter,
     badgeColor: brandTile,
     summary: "Primary cross-platform framework building high-performance 60fps applications for iOS and Android.",
-    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Meghna Life",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Ride Sharing App, Meghna Life",
   },
   {
     id: "dart",
@@ -103,7 +103,7 @@ const techItems: TechItem[] = [
     brand: siGetx,
     badgeColor: brandTile,
     summary: "High-velocity reactive state management, micro-benchmarked dependency injection, and routing.",
-    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Ride Sharing App",
   },
   {
     id: "clean-arch",
@@ -123,7 +123,7 @@ const techItems: TechItem[] = [
     brand: siSocketdotio,
     badgeColor: brandTile,
     summary: "Real-time bidirectional event pipeline with heartbeat recovery and offline polling fallbacks.",
-    usedIn: "Fouta App, BloodFit, Lyfuber",
+    usedIn: "Fouta App, BloodFit, Lyfuber, Ride Sharing App",
   },
   {
     id: "maps",
@@ -133,7 +133,7 @@ const techItems: TechItem[] = [
     brand: siGooglemaps,
     badgeColor: brandTile,
     summary: "Live camera tracking, custom map styles, route polylines, and distance matrix pricing.",
-    usedIn: "Lyfuber, Fouta App, DMS",
+    usedIn: "Lyfuber, Ride Sharing App, Fouta App, DMS",
   },
   {
     id: "firebase",
@@ -183,7 +183,7 @@ const techItems: TechItem[] = [
     brand: [siAppstore, siGoogleplay],
     badgeColor: brandTile,
     summary: "End-to-end publishing lifecycle: provisioning profiles, TestFlight, bundle signing, and store compliance.",
-    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Meghna Life",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Ride Sharing App, Meghna Life",
   },
 ];
 
