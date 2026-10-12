@@ -205,7 +205,7 @@ function Index() {
               Things I’ve <em className="text-accent font-serif font-normal">built.</em>
             </h2>
             <p className="mt-3 text-base text-foreground/80 max-w-xl">
-              City discovery, social commerce, beauty marketplaces, and AI health. 13+ production apps — 6 live on the App Store and Google Play.
+              Nursery operations, insurance, field distribution, and ride sharing. The earlier store apps are in the full archive.
             </p>
           </div>
           <Link
@@ -217,131 +217,125 @@ function Index() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Card 1: Presentini */}
+          {/* Card 1: NMS */}
           <div className="group rounded-2xl border border-border bg-card p-7 shadow-card transition-spring hover:-translate-y-1 hover:border-primary/40 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-4">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-primary font-bold">
-                  01 / FLAGSHIP · APP STORE &amp; PLAY STORE
+                  01 / GOVTECH · NURSERY OPERATIONS
                 </span>
-                <span className="font-mono text-[10px] text-muted-foreground">Sparktech · 2026</span>
+                <span className="font-mono text-[10px] text-muted-foreground">Synergy · 2023</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                Presentini
+                NMS
               </h3>
               <p className="font-sans text-sm text-foreground/80 mt-2.5 leading-relaxed">
-                City &amp; event discovery platform surfacing curated local experiences, location-aware filters, and push alerts. Live on iOS and Android.
+                Nursery Management System for forest officers — raising and sales, seedling stock, and multi-level approval from Beat and Range up to ACF and DFO.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Flutter</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Geolocation</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Firebase</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Bloc</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Clean Architecture</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Charts</span>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t border-border/80 flex items-center justify-between text-xs">
-              <Link to="/projects/presentini" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
+              <Link to="/projects/nursery-management-system" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
                 Project story <span>→</span>
               </Link>
-              <div className="flex items-center gap-3 font-mono text-[11px]">
-                <a href="https://apps.apple.com/us/app/presentini/id6770782530" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">App Store ↗</a>
-                <a href="https://play.google.com/store/apps/details?id=com.savvymyles.involved.involved" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">Play Store ↗</a>
-              </div>
+              <span className="font-mono text-[11px] text-muted-foreground">Client delivery</span>
             </div>
           </div>
 
-          {/* Card 2: Fouta App */}
+          {/* Card 2: Meghna Life */}
           <div className="group rounded-2xl border border-border bg-card p-7 shadow-card transition-spring hover:-translate-y-1 hover:border-primary/40 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-4">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-accent font-bold">
-                  02 / 4-ROLE SOCIAL COMMERCE
+                  02 / INSURANCE · PLAY STORE
                 </span>
-                <span className="font-mono text-[10px] text-muted-foreground">Sparktech · 2026</span>
+                <span className="font-mono text-[10px] text-muted-foreground">Synergy · 2023</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                Fouta App
+                Meghna Life
               </h3>
               <p className="font-sans text-sm text-foreground/80 mt-2.5 leading-relaxed">
-                4-role system (User, Seller, Driver, Admin) with Socket.IO real-time feeds, live chat, local cart caching, and end-to-end checkout &amp; delivery tracking.
+                Customer and advisor apps that replaced paper premium collection. bKash and Nagad payments, with sessions recovered if the app closes mid-transaction.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Socket.IO</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Hive</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Google Maps</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Flutter</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Bloc</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">bKash</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Nagad</span>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t border-border/80 flex items-center justify-between text-xs">
-              <Link to="/projects/fouta-app" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
+              <Link to="/projects/meghna-life-insurance" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
                 Project story <span>→</span>
               </Link>
-              <div className="flex items-center gap-3 font-mono text-[11px]">
-                <a href="https://apps.apple.com/us/app/fouta-app/id6749207732" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">App Store ↗</a>
-                <a href="https://play.google.com/store/apps/details?id=com.fouta.foutaapp" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">Play Store ↗</a>
-              </div>
+              <a href="https://play.google.com/store/apps/details?id=com.meghnalife.app.fa&hl=en" target="_blank" rel="noreferrer" className="font-mono text-[11px] text-muted-foreground hover:text-foreground underline">
+                Play Store ↗
+              </a>
             </div>
           </div>
 
-          {/* Card 3: TNP Beauty */}
+          {/* Card 3: DMS */}
           <div className="group rounded-2xl border border-border bg-card p-7 shadow-card transition-spring hover:-translate-y-1 hover:border-primary/40 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-4">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-800 font-bold">
-                  03 / BEAUTY MARKETPLACE · APP STORE &amp; PLAY STORE
+                  03 / FIELD FORCE · NOKIA &amp; HONOR
                 </span>
-                <span className="font-mono text-[10px] text-muted-foreground">Sparktech · 2026</span>
+                <span className="font-mono text-[10px] text-muted-foreground">Synergy · 2023</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                TNP Beauty
+                DMS
               </h3>
               <p className="font-sans text-sm text-foreground/80 mt-2.5 leading-relaxed">
-                4-role beauty marketplace — Customer, Beautician, and Vendor apps plus an Admin web panel. Location-aware bookings and Stripe payments. Live on iOS and Android.
+                Distributor management for Nokia and Honor sales — orders, IMEI scanning, sales-rep attendance, and live field tracking on Google Maps.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">Flutter</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Stripe</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Geolocation</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Bloc</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Google Maps</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">IMEI Scanner</span>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t border-border/80 flex items-center justify-between text-xs">
-              <Link to="/projects/tnp-beauty" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
+              <Link to="/projects/distributor-management-system" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
                 Project story <span>→</span>
               </Link>
-              <div className="flex items-center gap-3 font-mono text-[11px]">
-                <a href="https://apps.apple.com/us/app/the-noire-places/id6761523428" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">App Store ↗</a>
-                <a href="https://play.google.com/store/apps/details?id=com.annadat.tnp" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">Play Store ↗</a>
-              </div>
+              <span className="font-mono text-[11px] text-muted-foreground">Client delivery</span>
             </div>
           </div>
 
-          {/* Card 4: BloodFit */}
+          {/* Card 4: Lyfuber */}
           <div className="group rounded-2xl border border-border bg-card p-7 shadow-card transition-spring hover:-translate-y-1 hover:border-primary/40 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-4">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-primary font-bold">
-                  04 / AI HEALTH &amp; IN-APP PURCHASES
+                  04 / RIDE SHARING · PLAY STORE
                 </span>
-                <span className="font-mono text-[10px] text-muted-foreground">Sparktech Agency</span>
+                <span className="font-mono text-[10px] text-muted-foreground">Sparktech · 2025–2026</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                BloodFit
+                Lyfuber
               </h3>
               <p className="font-sans text-sm text-foreground/80 mt-2.5 leading-relaxed">
-                Blood-type personalized nutrition with AI generation, resilient Socket.IO with polling fallback, and 6-tier in-app subscription purchases on Google Play.
+                Passenger and driver ride sharing with a live map, an explicit trip state machine, and Stripe payments. Live on Google Play.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">In-App Purchases</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Socket.IO</span>
                 <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Socket.IO</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Google Maps</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Stripe</span>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t border-border/80 flex items-center justify-between text-xs">
-              <Link to="/projects/blood-fit" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
+              <Link to="/projects/lyfuber" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
                 Project story <span>→</span>
               </Link>
-              <a href="https://play.google.com/store/apps/details?id=com.bloodfitltd.bloodfit" target="_blank" rel="noreferrer" className="font-mono text-[11px] text-muted-foreground hover:text-foreground underline">
+              <a href="https://play.google.com/store/apps/details?id=com.lyfuber.app&hl=en" target="_blank" rel="noreferrer" className="font-mono text-[11px] text-muted-foreground hover:text-foreground underline">
                 Play Store ↗
               </a>
             </div>

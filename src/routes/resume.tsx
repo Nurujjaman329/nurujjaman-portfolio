@@ -76,7 +76,7 @@ function Resume() {
           <p className="text-foreground/85 leading-relaxed">
             Flutter Developer with 3 years of experience shipping scalable, cross-platform mobile apps across
             social commerce, beauty, fitness, ride-sharing, agri-tech, and enterprise GovTech. Delivered 13+ production
-            apps, with 5 live on the App Store and Google Play (Presentini, Fouta, BloodFit, Meghna). Proven expertise in Clean Architecture,
+            apps, with 6 live on the App Store and Google Play (Presentini, Fouta, TNP Beauty, BloodFit, Lyfuber, Meghna). Proven expertise in Clean Architecture,
             Socket.IO real-time communication, Google Maps navigation, and multi-gateway payments (Stripe, bKash, Nagad, ShurjoPay).
           </p>
         </Block>
@@ -87,7 +87,7 @@ function Resume() {
             company="Sparktech Agency"
             period="Dec 2025 — Present"
             bullets={[
-              "Architected and shipped production Flutter apps (Presentini, Fouta, BloodFit) published on the App Store and Google Play.",
+              "Architected and shipped production Flutter apps (Presentini, Fouta, TNP Beauty, BloodFit, Lyfuber) published on the App Store and Google Play.",
               "Engineered Socket.IO real-time pipelines for multi-role messaging, live activity feeds, and order tracking with reconnect handling.",
               "Implemented Google Maps and geolocation tracking with camera tracking, custom polylines, and proximity discovery.",
             ]}
@@ -124,12 +124,30 @@ function Resume() {
             ]}
           />
           <Job
+            role="TNP Beauty — Beauty Marketplace"
+            company="Sparktech Agency · App Store & Play Store"
+            period=""
+            bullets={[
+              "4-role marketplace — Customer, Beautician, and Vendor apps plus an Admin web panel — with location-aware bookings.",
+              "Stripe payments and geolocation discovery, shipped live on both the App Store and Google Play.",
+            ]}
+          />
+          <Job
             role="BloodFit — AI Health & Nutrition"
             company="Sparktech Agency · Live on Google Play"
             period=""
             bullets={[
               "Blood-type personalized nutrition with AI generation, resilient Socket.IO + polling fetch, and 6-tier in-app subscriptions.",
               "Implemented multi-tier in-app purchases with Firebase Auth and GetX state management.",
+            ]}
+          />
+          <Job
+            role="Lyfuber — Ride Sharing"
+            company="Sparktech Agency · Live on Google Play"
+            period=""
+            bullets={[
+              "Passenger and driver apps with a ride state machine, live map tracking, and in-trip messaging.",
+              "Google Directions routing and Stripe payments on the completed-ride path.",
             ]}
           />
           <Job
