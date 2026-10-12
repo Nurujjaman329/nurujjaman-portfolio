@@ -19,7 +19,7 @@ const techItems: TechItem[] = [
     iconText: "F",
     badgeColor: "bg-emerald-800 text-white",
     summary: "Primary cross-platform framework building high-performance 60fps applications for iOS and Android.",
-    usedIn: "Presentini, Fouta App, BloodFit, Meghna Life, DMS (Nokia/Honor)",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Meghna Life",
   },
   {
     id: "dart",
@@ -28,7 +28,7 @@ const techItems: TechItem[] = [
     iconText: "D",
     badgeColor: "bg-teal-700 text-white",
     summary: "Strong null-safety, asynchronous streams, custom isolates, and platform channel interop.",
-    usedIn: "All 13+ production apps",
+    usedIn: "Every production app",
   },
   {
     id: "bloc",
@@ -37,7 +37,7 @@ const techItems: TechItem[] = [
     iconText: "B",
     badgeColor: "bg-blue-800 text-white",
     summary: "Predictable event-driven state management enforcing strict immutability, testability, and audit trails.",
-    usedIn: "My Krishi, Edex-365, NMS, DMS (Nokia/Honor), Meghna Life",
+    usedIn: "Meghna Life, MyKrishi, DMS, Edex-365, Nursery Management",
   },
   {
     id: "getx",
@@ -46,7 +46,7 @@ const techItems: TechItem[] = [
     iconText: "G",
     badgeColor: "bg-purple-800 text-white",
     summary: "High-velocity reactive state management, micro-benchmarked dependency injection, and routing.",
-    usedIn: "Presentini, Fouta App, BloodFit, Lyfuber, TNP Beauty, Ride Sharing",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber",
   },
   {
     id: "clean-arch",
@@ -55,7 +55,7 @@ const techItems: TechItem[] = [
     iconText: "CA",
     badgeColor: "bg-amber-800 text-white",
     summary: "Feature-first separation into Presentation, Domain (use cases), and Data layers for zero vendor lock-in.",
-    usedIn: "My Krishi, Edex-365, NMS, DMS (Nokia/Honor), Meghna Life",
+    usedIn: "Meghna Life, MyKrishi, DMS, Edex-365, Nursery Management",
   },
   {
     id: "socketio",
@@ -64,7 +64,7 @@ const techItems: TechItem[] = [
     iconText: "SI",
     badgeColor: "bg-slate-800 text-white",
     summary: "Real-time bidirectional event pipeline with heartbeat recovery and offline polling fallbacks.",
-    usedIn: "Fouta (4-role feeds), BloodFit (AI updates), Lyfuber (Live driver tracking)",
+    usedIn: "Fouta App, BloodFit, Lyfuber",
   },
   {
     id: "maps",
@@ -73,7 +73,7 @@ const techItems: TechItem[] = [
     iconText: "GM",
     badgeColor: "bg-red-800 text-white",
     summary: "Live camera tracking, custom map styles, route polylines, and distance matrix pricing.",
-    usedIn: "Lyfuber, DMS (Nokia/Honor field rep tracking)",
+    usedIn: "Lyfuber, Fouta App, DMS",
   },
   {
     id: "firebase",
@@ -82,7 +82,7 @@ const techItems: TechItem[] = [
     iconText: "FB",
     badgeColor: "bg-amber-700 text-white",
     summary: "FCM Push Notifications, Google Auth, Crashlytics, and real-time remote configuration.",
-    usedIn: "Presentini, Fouta, BloodFit, TNP Beauty",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber",
   },
   {
     id: "stripe",
@@ -91,7 +91,7 @@ const techItems: TechItem[] = [
     iconText: "S$",
     badgeColor: "bg-indigo-700 text-white",
     summary: "Server-confirmed payment intents, 3D-Secure challenges, and App Store / Google Play In-App Purchases.",
-    usedIn: "BloodFit (6-tier IAP), TNP Beauty (Stripe)",
+    usedIn: "TNP Beauty, BloodFit, Lyfuber",
   },
   {
     id: "mfs",
@@ -100,7 +100,7 @@ const techItems: TechItem[] = [
     iconText: "৳",
     badgeColor: "bg-pink-800 text-white",
     summary: "Direct mobile financial services gateway integration automating digital policy premiums in Bangladesh.",
-    usedIn: "Meghna Life Insurance, MyKrishi",
+    usedIn: "Meghna Life",
   },
   {
     id: "hive",
@@ -108,8 +108,8 @@ const techItems: TechItem[] = [
     category: "arch",
     iconText: "H",
     badgeColor: "bg-yellow-800 text-white",
-    summary: "High-speed key-value NoSQL storage for instant offline cart persistence, cached feeds, and GPS logs.",
-    usedIn: "Fouta App, DMS (Nokia & Honor offline sync)",
+    summary: "Local storage for offline cart persistence and cached feeds.",
+    usedIn: "Fouta App",
   },
   {
     id: "stores",
@@ -118,7 +118,7 @@ const techItems: TechItem[] = [
     iconText: "ASC",
     badgeColor: "bg-zinc-800 text-white",
     summary: "End-to-end publishing lifecycle: provisioning profiles, TestFlight, bundle signing, and store compliance.",
-    usedIn: "6 Commercial Apps live on Stores",
+    usedIn: "Presentini, Fouta App, TNP Beauty, BloodFit, Lyfuber, Meghna Life",
   },
 ];
 
@@ -186,7 +186,7 @@ export function PhoneToolkit() {
 
             <div className="mt-4 rounded-xl border border-border/70 bg-surface/80 p-3">
               <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground font-semibold block mb-1">
-                Shipped In:
+                Used in:
               </span>
               <span className="font-sans text-xs font-semibold text-primary">
                 {selectedTech.usedIn}

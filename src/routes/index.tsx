@@ -205,7 +205,7 @@ function Index() {
               Things I’ve <em className="text-accent font-serif font-normal">built.</em>
             </h2>
             <p className="mt-3 text-base text-foreground/80 max-w-xl">
-              From construction &amp; hardware distribution to everyday consumer feeds. 13+ production apps — 6 live on the App Store and Google Play.
+              City discovery, social commerce, beauty marketplaces, and AI health. 13+ production apps — 6 live on the App Store and Google Play.
             </p>
           </div>
           <Link
@@ -283,32 +283,36 @@ function Index() {
             </div>
           </div>
 
-          {/* Card 3: DMS for Nokia & Honor */}
+          {/* Card 3: TNP Beauty */}
           <div className="group rounded-2xl border border-border bg-card p-7 shadow-card transition-spring hover:-translate-y-1 hover:border-primary/40 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between border-b border-border/80 pb-3 mb-4">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-800 font-bold">
-                  03 / ENTERPRISE LOGISTICS · NOKIA &amp; HONOR
+                  03 / BEAUTY MARKETPLACE · APP STORE &amp; PLAY STORE
                 </span>
-                <span className="font-mono text-[10px] text-muted-foreground">Synergy Interface</span>
+                <span className="font-mono text-[10px] text-muted-foreground">Sparktech · 2026</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                Distributor Management System (DMS)
+                TNP Beauty
               </h3>
               <p className="font-sans text-sm text-foreground/80 mt-2.5 leading-relaxed">
-                Supply-chain and sales-rep tracking for official Nokia and Honor device distribution. Background GPS tracking, offline sync, and barcode scanning.
+                4-role beauty marketplace — Customer, Beautician, and Vendor apps plus an Admin web panel. Location-aware bookings and Stripe payments. Live on iOS and Android.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted-foreground">
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Background GPS</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Barcode Scanner</span>
-                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Offline Sync</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Flutter</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">GetX</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Stripe</span>
+                <span className="rounded-md border border-border bg-surface px-2 py-0.5">Geolocation</span>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t border-border/80 flex items-center justify-between text-xs">
-              <Link to="/projects/distributor-management-system" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
+              <Link to="/projects/tnp-beauty" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
                 Project story <span>→</span>
               </Link>
-              <span className="font-mono text-[11px] text-muted-foreground">Enterprise Production</span>
+              <div className="flex items-center gap-3 font-mono text-[11px]">
+                <a href="https://apps.apple.com/us/app/the-noire-places/id6761523428" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">App Store ↗</a>
+                <a href="https://play.google.com/store/apps/details?id=com.annadat.tnp" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground underline">Play Store ↗</a>
+              </div>
             </div>
           </div>
 
