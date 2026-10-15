@@ -479,7 +479,7 @@ function Index() {
             </div>
           </div>
           <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-card">
-            <div className="font-display text-4xl font-bold text-emerald-800">6 Live</div>
+            <div className="font-display text-4xl font-bold text-emerald-800">7 Live</div>
             <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
               Store Releases
             </div>

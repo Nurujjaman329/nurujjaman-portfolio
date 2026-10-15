@@ -106,30 +106,27 @@ function Resume() {
 
         <Block title="Key Projects">
           <Job
-            role="Presentini — City & Event Discovery"
-            company="Sparktech Agency · App Store & Play Store"
+            role="NMS — Nursery Management"
+            company="Synergy Interface Ltd. · GovTech"
             period=""
             bullets={[
-              "City discovery platform surfacing location-aware events, exclusive specials, category filters, and Firebase push alerts.",
-              "Shipped live on both App Store and Google Play with GetX reactive state management and geolocation discovery.",
+              "Government nursery app for forest officers: raising and sales, seedling stock, and multi-level approval from Beat and Range up to ACF and DFO.",
             ]}
           />
           <Job
-            role="Fouta App — Social Commerce Marketplace"
-            company="Sparktech Agency · App Store & Play Store"
+            role="DMS — Nokia & Honor Distribution"
+            company="Synergy Interface Ltd."
             period=""
             bullets={[
-              "Multi-role commerce system (Customer, Seller, Driver, Admin) with real-time chat, live feeds, local cart caching, and end-to-end delivery tracking.",
-              "Built real-time messaging, feeds and order updates using Socket.IO, GetX state management, and Hive local persistence.",
+              "Distributor app for orders, IMEI scanning, sales-rep attendance, and live field tracking.",
             ]}
           />
           <Job
-            role="TNP Beauty — Beauty Marketplace"
-            company="Sparktech Agency · App Store & Play Store"
+            role="Lyfuber — Ride Sharing"
+            company="Sparktech Agency · Live on Google Play"
             period=""
             bullets={[
-              "4-role marketplace — Customer, Beautician, and Vendor apps plus an Admin web panel — with location-aware bookings.",
-              "Stripe payments and geolocation discovery, shipped live on both the App Store and Google Play.",
+              "Passenger and driver apps with a ride state machine, live map tracking, and Stripe payments.",
             ]}
           />
           <Job
@@ -138,34 +135,6 @@ function Resume() {
             period=""
             bullets={[
               "Blood-type personalized nutrition with AI generation, resilient Socket.IO + polling fetch, and 6-tier in-app subscriptions.",
-              "Implemented multi-tier in-app purchases with Firebase Auth and GetX state management.",
-            ]}
-          />
-          <Job
-            role="Lyfuber — Ride Sharing"
-            company="Sparktech Agency · Live on Google Play"
-            period=""
-            bullets={[
-              "Passenger and driver apps with a ride state machine, live map tracking, and in-trip messaging.",
-              "Google Directions routing and Stripe payments on the completed-ride path.",
-            ]}
-          />
-          <Job
-            role="Ride Sharing App — Shared Rides"
-            company="Sparktech Agency · Live on Google Play"
-            period=""
-            bullets={[
-              "Passenger and driver app with live tracking, in-trip chat, and wallet payments.",
-              "Live on Google Play as A dedo, with Socket.IO location updates and Google Directions auto-pricing.",
-            ]}
-          />
-          <Job
-            role="Meghna Life Insurance — Advisor Mobile Suite"
-            company="Synergy Interface Ltd. · Live on Google Play"
-            period=""
-            bullets={[
-              "Enterprise mobile suite for a major national insurer, digitizing advisor workflows, premium collection, and digital receipts.",
-              "Integrated bKash and Nagad for secure digital premium payments, replacing manual collection workflows.",
             ]}
           />
         </Block>

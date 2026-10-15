@@ -115,7 +115,7 @@ export function AgencyBadge() {
                   </div>
                 </div>
                 <div className="rounded-xl border border-border/70 bg-surface/70 p-2.5">
-                  <div className="font-display text-xl font-bold text-accent">6 Live</div>
+                  <div className="font-display text-xl font-bold text-accent">7 Live</div>
                   <div className="font-mono text-[9px] text-muted-foreground uppercase">
                     Store Releases
                   </div>
